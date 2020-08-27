@@ -58,4 +58,32 @@ console.log(
     inventors.find(inventor => inventor.last === "Kepler")
 );
 
+// Ejercicio 5
+// Alguno de los iventores nacio en 1867
+console.log(inventors.some(inventor => inventor.year === 1867));
+
+// Ejercicio 6
+// Todos los inventores nacieron despues de 1500?
+console.log(inventors.every(inventor => inventor.year > 1500));
+
+// Ejercicio 7
+// Ordenar los inventores por año
+
+console.log('Ejercicio 7.-');
+
+print(inventors.sort((a, b) => a.year - b.year ));
+
+print(inventors.sort((a,b) =>{
+    if(a.last > b.last)
+        return 1;
+    else
+        return -1;
+}));
+
+
+
+
+
+
+
 
