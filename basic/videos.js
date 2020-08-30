@@ -25,3 +25,31 @@ const str = `<ul>
 // Tip: convertir a un array de objetos
 // Tip2: split
 
+
+function segundos(str){
+let resultado = str.split(`li`);
+let videos = resultado.filter(function (string) { return string.includes("Flexbox Video"); });
+let intermedio = [];
+let minutos = [];
+for (let index = 0; index < videos.length; index++) {
+  intermedio = videos[index].split(`"`);
+  minutos.push(intermedio[1]);
+}
+let sumaTotal = 0;
+for (let index = 0; index < minutos.length; index++) {
+  
+  if(minutos[index].length < 5){
+    sumaTotal = sumaTotal + (parseInt(minutos[index].substring(0,1))*60 + parseInt(minutos[index].substring(2,4)));
+  }else{
+    sumaTotal = sumaTotal + (parseInt(minutos[index].substring(0,2))*60 + parseInt(minutos[index].substring(3,5)));
+  }
+}
+return console.log(sumaTotal);
+}
+
+segundos(str);
+
+
+
+
+
