@@ -55,8 +55,11 @@ function getTotalSegundos(videos, tipo){
 }
 
 
-console.log(getTotalSegundos(getVideos(str), "Redux Video"));
-function segundos(str){
+console.log(getTotalSegundos(getVideos(str), "Flexbox Video"));
+
+//esta es mi resolucion
+
+/* function segundos(str){
 let resultado = str.split(`li`);
 let videos = resultado.filter(function (string) { return string.includes("Flexbox Video"); });
 let intermedio = [];
@@ -78,7 +81,7 @@ return console.log(sumaTotal);
 }
 
 segundos(str);
-
+ */
 
 
 
