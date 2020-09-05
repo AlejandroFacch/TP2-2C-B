@@ -2,10 +2,67 @@ const POSSIBLE = 'Possible';
 const IMPOSSIBLE = 'Impossible';
 
 // Complete the organizingContainers function below.
-function organizingContainers(container) {
+function organizingContainers(containers) {
     
-    //return resp;
+    
+    
+    let cantPorCont = [];
+    for (let index = 0; index < containers.length; index++) {
+
+        let cantidadMaxima = 0;
+
+        for (let i = 0; i < containers[index].length; i++) {
+            
+            cantidadMaxima += containers[index][i];
+            
+        }
+        cantPorCont.push(cantidadMaxima);
+    }
+    let cantPorTipo = [];
+    for (let index = 0; index < containers[0].length; index++) {
+
+        cantidadMaxima = 0;
+
+        for (let i = 0; i < containers.length; i++) {
+            
+            cantidadMaxima += containers[i][index];
+            
+        }
+        cantPorTipo.push(cantidadMaxima);
+    }
+    let estado = true;
+    let indexTipo = 0;
+    let indexCont = 0;
+    cantPorTipo.sort(function(a,b) {return  b-a});
+    cantPorCont.sort(function(a,b) {return  b-a});
+
+    while(estado == true && indexCont != cantPorCont.length){
+        if(cantPorTipo[indexTipo] == cantPorCont[indexCont]){
+            cantPorTipo[indexTipo] = cantPorTipo[indexTipo] - cantPorCont[indexCont];
+                cantPorCont.splice(indexCont, 1);
+                indexTipo++;
+        }
+        else if(cantPorTipo[indexTipo] < cantPorCont[indexCont] && indexCont < cantPorCont.length-1){
+            indexCont++;
+        }else if((cantPorCont.length-1) == indexCont && cantPorTipo[indexTipo] == 0){
+            indexTipo++;
+            indexCont = 0;
+        }
+        else{
+            estado = false;
+        }
+    }
+    let resp;
+    if(estado == true){
+        resp = POSSIBLE;
+    }else{
+        resp = IMPOSSIBLE;
+    }
+
+    
+    return resp;
 }
+
 
 console.log(organizingContainers(
     [[1,3,1],
@@ -25,10 +82,10 @@ console.log(organizingContainers(
 ) == POSSIBLE);
 
 console.log(organizingContainers(
-    [997612619, 934920795, 998879231, 999926463],
+    [[997612619, 934920795, 998879231, 999926463],
     [960369681, 997828120, 999792735, 979622676],
     [999013654, 998634077, 997988323, 958769423],
-    [997409523, 999301350, 940952923, 993020546]
+    [997409523, 999301350, 940952923, 993020546]]
 )== POSSIBLE);
 
 console.log(organizingContainers(
